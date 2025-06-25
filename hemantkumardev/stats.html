@@ -7,37 +7,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Website Traffic Dashboard</h1>
-    <button onclick="fetchData()">Fetch Data</button>
-    <div id="data-container"></div>
 
-    <script>
-        function fetchData() {
-            const apiUrl = 'https://4ody334cil.execute-api.us-west-2.amazonaws.com/stats-4563'; // Replace with your API endpoint
+<header>
+    <nav>
+        <div class="wrapper">
+            <div class="logo"><a href="/">Website Traffic for HemantKumar.dev</a></div>
+        </div>
+    </nav>
+</header>
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    displayData(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
+<main>
+    <section id="dashboard" class="section">
+        <div class="section-content">
+            <button onclick="fetchData()">Fetch Data</button>
+            <div id="data-container">
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="wrapper">
+        &copy; 2025 Website Metrics. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    async function fetchData() {
+        const apiUrl = 'https://4ody334cil.execute-api.us-west-2.amazonaws.com/stats-4563'; // Replace with your API endpoint
+        const container = document.getElementById('data-container');
+        container.innerHTML = '<p>Loading data...</p>'; // Indicate loading
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            displayData(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            container.innerHTML = '<p class="error">Error fetching data. Please try again later.</p>'; // Display error message
         }
+    }
 
-        function displayData(data) {
-            const container = document.getElementById('data-container');
-            container.innerHTML = `
+    function displayData(data) {
+        const container = document.getElementById('data-container');
+        container.innerHTML = `
                 <table>
-                    <tr><th>Total Requests</th><td>${data.total_requests}</td></tr>
-                    <tr><th>Success Requests</th><td>${data.success_requests}</td></tr>
-                    <tr><th>Failed Requests</th><td>${data.failed_requests}</td></tr>
-                    <tr><th>Total Unique IPs</th><td>${data.total_unique_IPs}</td></tr>
-                    <tr><th>Total Unique Success IPs</th><td>${data.total_unique_success_IP}</td></tr>
-                    <tr><th>Total Unique Failed IPs</th><td>${data.total_unique_failed_IPs}</td></tr>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Total Requests</td><td>${data.total_requests}</td></tr>
+                        <tr><td>Success Requests</td><td>${data.success_requests}</td></tr>
+                        <tr><td>Failed Requests</td><td>${data.failed_requests}</td></tr>
+                        <tr><td>Total Unique IPs</td><td>${data.total_unique_IPs}</td></tr>
+                        <tr><td>Total Unique Success IPs</td><td>${data.total_unique_success_IP}</td></tr>
+                        <tr><td>Total Unique Failed IPs</td><td>${data.total_unique_failed_IPs}</td></tr>
+                    </tbody>
                 </table>
             `;
-        }
-    </script>
+    }
+
+    // Optionally fetch data on page load
+    // document.addEventListener('DOMContentLoaded', fetchData);
+</script>
+
 </body>
 </html>

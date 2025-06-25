@@ -1,63 +1,100 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Kumar - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-
-</html>
 <body>
-<nav>
-  <div class="wrapper">
-    <div class="logo"><a href="#">Hemant Kumar</a></div>
-    <input type="radio" name="slider" id="menu-btn">
-    <input type="radio" name="slider" id="close-btn">
-    <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="blogs.html">Blogs</a></li>
-    </ul>
-    <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-  </div>
-</nav>
 
-<div class="body-text">
+<header>
+    <nav>
+        <div class="wrapper">
+            <div class="logo"><a href="/">Hemant Kumar</a></div>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="/" >About</a></li>
+                <li><a href="/projects.html" >Projects</a></li>
+                <li><a href="/blogs.html" >Blogs</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-    <section id="about-me">
-        <h2>About Me</h2>
-        <p>I am a <strong>Software Engineer </strong> at <strong>JPMorgan Chase & Co., NYC, USA</strong>, with
-            <strong>14+ </strong> years of experience in designing and building distributed systems that serve
-            millions of users. <br/>As an <strong>AWS Certified Solution Architect - Associate</strong>, I specialize in
-            cloud infrastructure, API development, and automation, leveraging Java, Spring Boot, AWS,
-                Terraform, and CI/CD to deploy multi-region, highly available APIs. My expertise in
-            API integrations and scalability ensures seamless banking services and enhanced customer
-            experiences. Passionate about automation and user-centric design, I thrive on solving complex
-            challenges, optimizing workflows, and driving innovation in financial technology.</p>
+<main>
+    <section id="about" class="section">
+        <div class="section-content">
+            <h2>About Me</h2>
+            <h3>Core Expertise</h3>
+            <p>
+                <strong>AWS Cloud Solution Architect</strong> with over <strong>14 years</strong> of experience specializing in the strategic design and development of robust, large-scale <strong>distributed systems</strong> that serve millions of users.
+            </p>
+            <h3>Current Role</h3>
+            <p>
+                Currently serving as a <strong>Software Engineer III</strong> at <strong>JPMorgan Chase & Co.</strong> in New York City, USA, contributing to the development and deployment of critical banking services.
+            </p>
+            <h3>Technical Skills & Technologies</h3>
+            <p>
+                My core technical foundation includes:
+            <ul>
+                <li><strong>Cloud Platforms:</strong> Amazon Web Services (AWS)</li>
+                <li><strong>Programming Languages:</strong> Java</li>
+                <li><strong>Frameworks:</strong> Spring Boot</li>
+                <li><strong>Infrastructure as Code:</strong> Terraform</li>
+                <li><strong>CI/CD:</strong> Continuous Integration and Continuous Deployment methodologies</li>
+            </ul>
+            </p>
+
+            <h3>Key Areas of Expertise</h3>
+            <p>
+                My key areas of expertise encompass:
+            <ul>
+                <li><strong>Microservices Architecture & Development</strong></li>
+                <li>Comprehensive <strong>Cloud Solution Design & Implementation</strong></li>
+                <li><strong>API Development</strong> (design, implementation, and management)</li>
+                <li><strong>System Integration</strong> (seamlessly connecting diverse systems)</li>
+                <li>Ensuring optimal <strong>Scalability</strong> and <strong>High Availability</strong> of applications</li>
+                <li>Deployment of <strong>Multi-Region Architectures</strong></li>
+            </ul>
+            </p>
+
+            <h3>Professional Attributes</h3>
+            <p>
+                I am a proactive and results-oriented professional with a passion for:
+            <ul>
+                <li>Tackling <strong>complex technical challenges</strong> with innovative solutions</li>
+                <li>Streamlining <strong>development workflows</strong> for increased efficiency</li>
+                <li>Driving impactful <strong>innovation</strong> within the <strong>financial technology</strong> sector</li>
+            </ul>
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/hemantk01/"  class="social-icon"> <i class="fab fa-linkedin"></i> </a>
+                <a href="https://github.com/hkcodebase"  class="social-icon"> <i class="fab fa-github"></i> </a>
+                <a href="https://hkcodeblogs.medium.com"  class="social-icon"> <i class="fab fa-medium"></i> </a>
+            </div>
+        </div>
     </section>
+</main>
+<footer>
+    &copy; 2025 HemantKumar.dev  All rights reserved.
+</footer>
 
-    <div class="sub-title">
-<!--    <a href="#" class="fa fa-facebook"></a>-->
-<!--    <a href="#" class="fa fa-twitter"></a>-->
-    <a href="https://www.linkedin.com/in/hemantk01/" target="_blank" class="fa fa-linkedin">
-<!--      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="social-logo" alt="LinkedIn"/>-->
-    </a>
 
-    <a href="https://github.com/hkcodebase" target="_blank" class="fa fa-github">
-<!--      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="social-logo" alt="Github"/>-->
-    </a>
+<script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
 
-<!--    <a href="https://twitter.com/hey_mant" target="_blank" class="fa fa-twitter">-->
-<!--&lt;!&ndash;      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="social-logo" alt="Twitter"/>&ndash;&gt;-->
-<!--    </a>-->
-
-    <a href="https://hkcodeblogs.medium.com" target="_blank" class="fa fa-medium">
-<!--      <img src="https://s.magecdn.com/social/tc-medium.svg" class="social-logo" alt="Medium"/>-->
-    </a>
-
-    </div>
-</div>
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 </body>
 
+</html>
