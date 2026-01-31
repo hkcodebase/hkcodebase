@@ -59,6 +59,9 @@ jobs:
           audience: sts.amazonaws.com
           role-session-name: github-actions-static-site
 
+      - name: Get caller identity
+        run: aws sts get-caller-identity
+
       - name: Upload index.html to S3
         run: |
           aws s3 cp "./hemantkumardev/index.html" "s3://${{ vars.S3_BUCKET_NAME }}/index.html" \
