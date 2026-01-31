@@ -8,7 +8,7 @@ on:
       - ".github/workflows/main.yml"
 
 permissions:
-  id-token: write   # required for OIDC
+  id-token: write
   contents: read
 
 jobs:
@@ -22,11 +22,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate required variables are set
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${AWS_ROLE_ARN:?Missing vars.AWS_ROLE_ARN (GitHub repo variable)}"
+          : "${S3_BUCKET_NAME:?Missing vars.S3_BUCKET_NAME (GitHub repo variable)}"
+          : "${CLOUDFRONT_DISTRIBUTION_ID:?Missing vars.CLOUDFRONT_DISTRIBUTION_ID (GitHub repo variable)}"
+        env:
+          AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
+          S3_BUCKET_NAME: ${{ vars.S3_BUCKET_NAME }}
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+          audience: sts.amazonaws.com
+          role-session-name: github-actions-static-site
 
       - name: Upload index.html to S3
         run: |
@@ -38,4 +52,4 @@ jobs:
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
-            --paths "/index.html" "/" "/assets/*"
+            --paths "/index.html" "/"
