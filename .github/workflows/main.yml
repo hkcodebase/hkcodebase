@@ -1,20 +1,41 @@
-name: Upload to hemantkumar.dev S3
+name: Deploy index.html to S3 + Invalidate CloudFront (OIDC)
 
 on:
   push:
-    branches:
-    - main
+    branches: [ "main" ]
+    paths:
+      - "hemantkumardev/index.html"
+      - ".github/workflows/main.yml"
+
+permissions:
+  id-token: write   # required for OIDC
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: us-east-1
+
     steps:
-    - name: Copy a folder to s3
-      uses: prewk/s3-cp-action@v2
-      with:
-        aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_region: us-west-2
-        source: './hemantkumardev/'
-        dest: 's3://hemantkumardev'
-        flags: --recursive
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload index.html to S3
+        run: |
+          aws s3 cp "./hemantkumardev/index.html" "s3://${{ vars.S3_BUCKET_NAME }}/index.html" \
+            --cache-control "max-age=60" \
+            --content-type "text/html; charset=utf-8"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/index.html" "/" "/assets/*"
