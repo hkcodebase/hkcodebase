@@ -23,6 +23,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show checked-out ref/branch
+        shell: bash
+        run: |
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF=$GITHUB_BASE_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo ""
+          echo "git branch:"
+          git branch --show-current || true
+          echo "git rev-parse:"
+          git rev-parse --abbrev-ref HEAD || true
+          git log -1 --oneline || true
+
       - name: Validate required variables are set
         shell: bash
         run: |
