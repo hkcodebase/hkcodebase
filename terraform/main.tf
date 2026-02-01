@@ -48,7 +48,7 @@ resource "aws_s3_bucket_versioning" "website_storage" {
   bucket = aws_s3_bucket.website_storage.id
 
   versioning_configuration {
-    status = "Enabled"
+    status = "Suspended"
   }
 }
 
@@ -148,10 +148,8 @@ resource "aws_s3_bucket_policy" "website_storage" {
 # -----------------------------------------------------------------------------
 resource "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
-
   client_id_list = ["sts.amazonaws.com"]
-
-  thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
+  thumbprint_list = ["2b18947a6a9fc7764fd8b5fb18a863b0c6dac24f"]
 }
 
 resource "aws_iam_role" "github_actions" {
