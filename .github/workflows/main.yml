@@ -23,6 +23,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show checked-out ref/branch
+        shell: bash
+        run: |
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF=$GITHUB_BASE_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo ""
+          echo "git branch:"
+          git branch --show-current || true
+          echo "git rev-parse:"
+          git rev-parse --abbrev-ref HEAD || true
+          git log -1 --oneline || true
+
+      - name: Validate required variables are set
+        shell: bash
+        run: |
+          set -euo pipefail
+          : "${AWS_ROLE_ARN:?Missing vars.AWS_ROLE_ARN (GitHub repo variable)}"
+          : "${S3_BUCKET_NAME:?Missing vars.S3_BUCKET_NAME (GitHub repo variable)}"
+          : "${CLOUDFRONT_DISTRIBUTION_ID:?Missing vars.CLOUDFRONT_DISTRIBUTION_ID (GitHub repo variable)}"
+        env:
+          AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
+          S3_BUCKET_NAME: ${{ vars.S3_BUCKET_NAME }}
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
