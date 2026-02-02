@@ -1,7 +1,9 @@
-# Hi there! 👋 I'm Hemant Kumar
+# Hemant Kumar | AWS Certified Solutions Architect 
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-hemantkumar.dev-blue?style=for-the-badge&logo=google-chrome)](https://hemantkumar.dev)
+
 [![Medium](https://img.shields.io/badge/Medium-hkcodeblogs-black?style=for-the-badge&logo=medium)](https://hkcodeblogs.medium.com)
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/hemantk01/)
 
 I am a **Software Engineer III** with over **15 years of experience** specializing in building scalable, high-performance distributed systems on AWS. My expertise spans from architecting banking APIs to implementing robust Infrastructure as Code (IaC) solutions.
@@ -21,11 +23,8 @@ I am a **Software Engineer III** with over **15 years of experience** specializi
 | Component | Technology |
 | --- | --- |
 | **Backend/Core** | Java, Spring Boot, Microservices
-|
 | **Cloud Platform** | AWS (ECS/EKS, S3, CloudFront, Route53)
-|
 | **IaC & DevOps** | Terraform, CI/CD Pipelines (Blue/Green)
-|
 | **Data/ETL** | SQL, NoSQL, Data Modeling, ETL Pipelines
 
 
