@@ -1,4 +1,4 @@
 aws_region = "us-east-1"
 project_name = "portfolio-website"
-github_username = "hkcodebase"
-repo_name = "hkcodebase.github.io"
+github_username = "<REPLACE_github_username>"
+repo_name = "<REPLACE_repo_name>"

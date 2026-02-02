@@ -17,7 +17,12 @@ This readme covers:
 ## 1) Configure Terraform variables
 
 Create `terraform.tfvars` in the `terraform/` directory (example):
-`aws_region = "us-east-1" project_name = "portfolio" github_username = "<YOUR_GITHUB_USERNAME>" repo_name = "<YOUR_REPO_NAME>"`
+```hcl
+ aws_region = "us-east-1" 
+ project_name = "portfolio" 
+ github_username = "<YOUR_GITHUB_USERNAME>" 
+ repo_name = "<YOUR_REPO_NAME>"
+```
 
 
 ---
