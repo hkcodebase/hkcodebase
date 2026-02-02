@@ -1,218 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hemant Kumar | Software Engineer III</title>
+    <title>Hemant Kumar | Cloud Architect & SE III</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-        /* Massive Section Headings */
-        .section-title {
-            @apply text-xl md:text-8xl font-black tracking-tighter mb-6 leading-none;
-            background: linear-gradient(to right, #111827 30%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        .dark .hero-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, rgba(17, 24, 39, 0) 100%);
         }
 
-        .title-accent {
-            @apply h-3 w-48 bg-blue-600 rounded-full mb-16;
-            background: linear-gradient(to right, #2563eb, #93c5fd);
-        }
-
-        .experience-card {
-            @apply relative pl-12 border-l-8 border-gray-100 pb-16 transition-all;
-        }
-
-        .experience-card:hover {
-            @apply border-blue-600;
+        .stat-card {
+            @apply p-8 rounded-3xl border border-gray-100 bg-white transition-all hover:shadow-2xl hover:-translate-y-2
+            dark:bg-gray-800 dark:border-gray-700 dark:hover:shadow-blue-900/20;
         }
     </style>
 </head>
-<body class="bg-white text-gray-800 antialiased">
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased hero-gradient transition-colors duration-300">
 
-<nav class="bg-white/90 backdrop-blur-md border-b sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <span class="font-black text-gray-900 text-2xl tracking-tighter uppercase">Hemant<span class="text-blue-600">Kumar</span></span>
-        <div class="hidden md:flex space-x-10 text-xs font-black uppercase tracking-[0.2em] text-gray-500">
-            <a href="#about" class="hover:text-blue-600 transition">About</a>
-            <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
-            <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <span class="font-black text-2xl tracking-tighter italic">H<span class="text-blue-600">K</span>.</span>
+
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#work" class="hover:text-blue-600 transition">Portfolio</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Expertise</a>
+            </div>
+
+            <button id="theme-toggle" class="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:ring-2 ring-blue-600/50 transition-all">
+                <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 text-amber-500 hidden"></i>
+                <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 text-blue-600"></i>
+            </button>
+
+            <a href="https://hkcodeblogs.medium.com" class="bg-black dark:bg-blue-600 text-white px-5 py-2.5 rounded-full hover:scale-105 transition text-xs font-bold uppercase tracking-widest">Read Blog</a>
         </div>
     </div>
 </nav>
 
+<main>
+    <section class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <span class="text-blue-600 font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Based in New York City</span>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                Architecting <br/>
+                <span class="text-gray-400 dark:text-gray-500">Scalable Systems.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 dark:text-gray-400 max-w-2xl font-medium leading-relaxed mb-12">
+                Software Engineer III at <span class="text-black dark:text-white font-bold">JPMorgan Chase</span>. 15 years experience turning complex requirements into high-performance distributed reality.
+            </p>
 
-<main class="max-w-6xl mx-auto px-6 py-32">
-    <section id="connect" class="mb-48">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a href="https://github.com/hkcodebase" target="_blank" class="social-button">
-                <i data-lucide="github" class="w-8 h-8"></i>
-                <div>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">View Code</p>
-                    <p class="text-lg">GitHub</p>
-                </div>
-            </a>
-            <a href="https://www.linkedin.com/in/hemantk01/" target="_blank" class="social-button">
-                <i data-lucide="linkedin" class="w-8 h-8"></i>
-                <div>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Let's Network</p>
-                    <p class="text-lg">LinkedIn</p>
-                </div>
-            </a>
-            <a href="https://hkcodeblogs.medium.com" target="_blank" class="social-button">
-                <i data-lucide="medium" class="w-8 h-8"></i>
-                <div>
-                    <p class="text-xs uppercase tracking-widest text-gray-600">Read My Articles on</p>
-                    <p class="text-lg">Medium</p>
-                </div>
-            </a>
-        </div>
-    </section>
-    <section id="about" class="mb-48">
-        <h1 class="text-4xl text-blue-600">Professional Summary</h1><br/>
-        <div class="title-accent"></div>
-        <div class="grid md:grid-cols-3 gap-16">
-            <div class="md:col-span-2 text-2xl md:text-3xl text-gray-600 leading-snug font-medium space-y-8">
-                <p>
-                    Results-driven <span class="text-gray-900 font-extrabold">Software Engineer III</span> with 15 years of experience in delivering scalable, secure and high-performance distributed systems on AWS.
-                </p>
-                <p>
-                    Expertise in <span class="font-bold">microservices architecture</span>, system design, and performance optimization. Currently leading engineering efforts at <span class="text-gray-900 font-extrabold">JPMorgan Chase & Co.</span> in NYC.
-                </p>
-            </div>
-            <div class="bg-gray-900 p-10 rounded-[3rem] text-white">
-                <h4 class="text-blue-400 font-black uppercase tracking-[0.2em] text-xs mb-8">Core Mastery</h4>
-                <ul class="space-y-6 font-bold text-lg">
-                    <li class="flex items-center gap-4"><i data-lucide="layers" class="text-blue-500"></i> Distributed Systems</li>
-                    <li class="flex items-center gap-4"><i data-lucide="shield" class="text-blue-500"></i> API Security</li>
-                    <li class="flex items-center gap-4"><i data-lucide="infinity" class="text-blue-500"></i> CI/CD Strategy</li>
-                    <li class="flex items-center gap-4"><i data-lucide="users" class="text-blue-500"></i> Team Leadership</li>
-                </ul>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://www.linkedin.com/in/hemantk01/" class="flex items-center gap-3 bg-gray-900 dark:bg-white dark:text-black text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition shadow-lg">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i> Let's Connect
+                </a>
+                <a href="https://github.com/hkcodebase" class="flex items-center gap-3 bg-gray-900 dark:bg-white dark:text-black text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition shadow-lg">
+                    <i data-lucide="github" class="w-5 h-5"></i> GitHub
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="mb-48">
-        <h1 class="text-4xl text-blue-600">Experience</h1><br/>
-        <div class="title-accent"></div>
-
-        <div class="space-y-0">
-            <div class="experience-card">
-                <div class="absolute -left-[16px] top-0 w-8 h-8 bg-blue-600 rounded-full ring-8 ring-white"></div>
-                <div class="flex flex-wrap justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-4xl font-black text-gray-900 tracking-tighter">Software Engineer III</h3>
-                        <p class="text-xl font-bold mt-1">JPMorgan Chase & Co. // NYC, USA</p>
-                    </div>
-                    <span class="text-lg font-black text-gray-400 bg-gray-50 px-6 py-2 rounded-full">05/2023 — PRESENT</span>
-                </div>
-                <ul class="space-y-4 text-xl text-gray-600 font-medium max-w-4xl">
-                    <li class="flex gap-4"><i data-lucide="check" class="text-blue-500 shrink-0 mt-1"></i> Developed high-performance banking APIs across multi-region AWS ECS/EKS clusters for extreme scale and reliability.</li>
-                    <li class="flex gap-4"><i data-lucide="check" class="text-blue-500 shrink-0 mt-1"></i> Established robust CI/CD in Jenkins and Spinnaker using Blue/Green strategy to eliminate deployment risk.</li>
-                    <li class="flex gap-4"><i data-lucide="check" class="text-blue-500 shrink-0 mt-1"></i> Implemented JPMC approved standard 12 Steps of comprehensive testing and deployment.</li>
-                </ul>
+    <section class="py-20 px-6 bg-gray-50 dark:bg-gray-800/50">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="stat-card">
+                <div class="text-blue-600 mb-4"><i data-lucide="zap" class="w-10 h-10"></i></div>
+                <h3 class="text-4xl font-black mb-2">70%</h3>
+                <p class="text-gray-500 dark:text-gray-400 font-medium">Reduction in report generation time for global pharma clients.</p>
             </div>
-            <br/>
-
-            <div class="experience-card">
-                <div class="absolute -left-[12px] top-0 w-6 h-6 bg-gray-200 rounded-full ring-8 ring-white"></div>
-                <div class="flex flex-wrap justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-4xl font-black text-gray-900 tracking-tighter">Senior Consultant - Technology</h3>
-                        <p class="text-xl font-bold text-gray-400 mt-1">Calance // Gurugram, India</p>
-                    </div>
-                    <span class="text-lg font-black text-gray-300 px-6 py-2 rounded-full">07/2018 — 05/2023</span>
-                </div>
-                <ul class="space-y-4 text-xl text-gray-600 font-medium max-w-4xl">
-                    <li class="flex gap-4"><i data-lucide="minus" class="text-gray-300 shrink-0 mt-1"></i> Led a team of 6 engineers for Otsuka Pharmaceutical, reducing report generation time by 70%.</li>
-                    <li class="flex gap-4"><i data-lucide="minus" class="text-gray-300 shrink-0 mt-1"></i> Managed recruitment and mentored junior engineers, resulting in 15% faster onboarding.</li>
-                </ul>
+            <div class="stat-card">
+                <div class="text-blue-600 mb-4"><i data-lucide="globe" class="w-10 h-10"></i></div>
+                <h3 class="text-4xl font-black mb-2">1M+</h3>
+                <p class="text-gray-500 dark:text-gray-400 font-medium">Daily transactions processed through resilient AWS architectures.</p>
             </div>
-
-            <div class="experience-card">
-                <div class="absolute -left-[12px] top-0 w-6 h-6 bg-gray-200 rounded-full ring-8 ring-white"></div>
-                <div class="flex flex-wrap justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-4xl font-black text-gray-900 tracking-tighter">Senior Software Engineer</h3>
-                        <p class="text-xl font-bold text-gray-400 mt-1">HTC Global Services Ltd. // India</p>
-                    </div>
-                    <span class="text-lg font-black text-gray-300 px-6 py-2 rounded-full">04/2015 — 06/2018</span>
-                </div>
-                <p class="text-xl text-gray-600 font-medium max-w-4xl">Developed modules within the TraQtion SaaS application, reducing audit cycle costs by 25% and SLA processing time by 40%.</p>
-            </div>
-
-            <div class="experience-card">
-                <div class="absolute -left-[12px] top-0 w-6 h-6 bg-gray-200 rounded-full ring-8 ring-white"></div>
-                <div class="flex flex-wrap justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-4xl font-black text-gray-900 tracking-tighter">Software Engineer</h3>
-                        <p class="text-xl font-bold text-gray-400 mt-1">Decathlon Sports India // Bengaluru</p>
-                    </div>
-                    <span class="text-lg font-black text-gray-300 px-6 py-2 rounded-full">01/2014 — 03/2015</span>
-                </div>
-                <p class="text-xl text-gray-600 font-medium max-w-4xl">Developed a Java-based system to automate order status integration, decreasing processing time from 1 day to 15 minutes.</p>
-            </div>
-
-            <div class="experience-card border-none">
-                <div class="absolute -left-[12px] top-0 w-6 h-6 bg-gray-200 rounded-full ring-8 ring-white"></div>
-                <div class="flex flex-wrap justify-between items-start mb-6">
-                    <div>
-                        <h3 class="text-4xl font-black text-gray-900 tracking-tighter">Software Engineer</h3>
-                        <p class="text-xl font-bold text-gray-400 mt-1">iGATE Global Solutions // Bengaluru</p>
-                    </div>
-                    <span class="text-lg font-black text-gray-300 px-6 py-2 rounded-full">09/2010 — 12/2013</span>
-                </div>
-                <p class="text-xl text-gray-600 font-medium max-w-4xl">Built enterprise-level Java applications for GE Healthcare to process OLTP data, streamlining business operations.</p>
+            <div class="stat-card">
+                <div class="text-blue-600 mb-4"><i data-lucide="shield-check" class="w-10 h-10"></i></div>
+                <h3 class="text-4xl font-black mb-2">Zero</h3>
+                <p class="text-gray-500 dark:text-gray-400 font-medium">Deployment risk using standard Blue/Green CI/CD strategies.</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="mb-48">
-        <h1 class="text-4xl text-blue-600">Technical Expertise</h1><br/>
-        <div class="title-accent"></div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="bg-gray-50 p-12 rounded-[3rem] border border-gray-100">
-                <h3 class="text-3xl font-black mb-10 flex items-center gap-4 text-gray-900 uppercase tracking-tighter">
-                    <i data-lucide="code-2" class="w-8 h-8 text-blue-600"></i> Backend
-                </h3>
-                <div class="flex flex-wrap gap-4 text-lg font-bold">
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Java</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Spring Boot</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm text-blue-600">Microservices</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">NoSQL/SQL</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">ETL</span>
+    <section id="work" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-xs font-black uppercase tracking-[0.3em] text-blue-600 mb-4">Featured Project</h2>
+            <div class="bg-gray-900 dark:bg-black rounded-[3rem] overflow-hidden text-white grid md:grid-cols-2 shadow-2xl">
+                <div class="p-12 md:p-20">
+                    <div class="flex gap-3 mb-6">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase">Terraform</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase">AWS</span>
+                    </div>
+                    <h3 class="text-4xl font-black mb-6">Portfolio Infrastructure as Code</h3>
+                    <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                        Automated AWS pipeline built with S3, CloudFront, and Route53, provisioned entirely via modular Terraform scripts.
+                    </p>
+                    <a href="https://github.com/hkcodebase" class="inline-flex items-center gap-2 font-bold text-blue-400 hover:text-white transition">
+                        View Infrastructure Source <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="bg-gray-50 p-12 rounded-[3rem] border border-gray-100">
-                <h3 class="text-3xl font-black mb-10 flex items-center gap-4 text-gray-900 uppercase tracking-tighter">
-                    <i data-lucide="cloud" class="w-8 h-8 text-blue-600"></i> Cloud & Ops
-                </h3>
-                <div class="flex flex-wrap gap-4 text-lg font-bold">
-                    <span class="bg-blue-600 text-white px-6 py-3 rounded-2xl shadow-lg">AWS (EKS/ECS/S3)</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Terraform</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Docker</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Jenkins</span>
-                    <span class="bg-white px-6 py-3 rounded-2xl border border-gray-200 shadow-sm">Agile</span>
+                <div class="bg-blue-600/10 flex items-center justify-center p-12">
+                    <div class="border-4 border-white/10 p-12 rounded-full animate-pulse">
+                        <i data-lucide="cloud-cog" class="w-24 h-24 text-blue-500"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="skills" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter">Technical Stack</h2>
+                <p class="text-gray-500 dark:text-gray-400 mt-4 text-lg font-medium">Core technologies I use to build enterprise applications.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-10 border border-gray-100 dark:border-gray-800 rounded-3xl bg-white dark:bg-gray-800/30">
+                    <h4 class="font-black text-xl mb-6 flex items-center gap-3">
+                        <i data-lucide="database" class="text-blue-600"></i> Backend
+                    </h4>
+                    <ul class="space-y-4 text-gray-500 dark:text-gray-400 font-medium">
+                        <li>Java / Spring Boot</li>
+                        <li>Microservices Architecture</li>
+                        <li>SQL & NoSQL (DynamoDB)</li>
+                        <li>Distributed Caching</li>
+                    </ul>
+                </div>
+                <div class="p-10 border border-gray-100 dark:border-gray-800 rounded-3xl bg-white dark:bg-gray-800/30">
+                    <h4 class="font-black text-xl mb-6 flex items-center gap-3">
+                        <i data-lucide="cloud" class="text-blue-600"></i> Cloud & DevOps
+                    </h4>
+                    <ul class="space-y-4 text-gray-500 dark:text-gray-400 font-medium">
+                        <li>Terraform (IaC)</li>
+                        <li>AWS (EKS/ECS/S3)</li>
+                        <li>CI/CD (Jenkins/Spinnaker)</li>
+                        <li>Docker & Containers</li>
+                    </ul>
+                </div>
+                <div class="p-10 border border-gray-100 dark:border-gray-800 rounded-3xl bg-white dark:bg-gray-800/30">
+                    <h4 class="font-black text-xl mb-6 flex items-center gap-3">
+                        <i data-lucide="check-circle" class="text-blue-600"></i> Engineering
+                    </h4>
+                    <ul class="space-y-4 text-gray-500 dark:text-gray-400 font-medium">
+                        <li>API Security & OAuth</li>
+                        <li>System Design</li>
+                        <li>Agile Leadership</li>
+                        <li>Performance Tuning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
-<footer class="py-24 text-center border-t border-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-black mb-8 text-gray-900">HEMANT KUMAR</h2>
-        <p class="text-gray-400 font-bold uppercase tracking-[0.4em] text-xs">&copy; 2026 hemantkumar.dev</p>
+<footer class="bg-gray-900 text-white py-20 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 class="text-3xl font-black mb-4 tracking-tighter italic">H<span class="text-blue-600">K</span>.</h2>
+        <p class="text-gray-500 mb-12 uppercase tracking-widest text-xs font-bold">© 2026 hemantkumar.dev</p>
     </div>
 </footer>
 
 <script>
     lucide.createIcons();
+
+    // Dark Mode Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    themeToggleBtn.addEventListener('click', function() {
+        document.documentElement.classList.toggle('dark');
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+    });
 </script>
 </body>
 </html>
