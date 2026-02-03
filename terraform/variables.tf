@@ -20,3 +20,18 @@ variable "repo_name" {
   type = string
   default = ""
 }
+
+# -----------------------------------------------------------------------------
+# CloudFront custom domain + ACM cert (must be in us-east-1 for CloudFront)
+# -----------------------------------------------------------------------------
+variable "cloudfront_aliases" {
+  description = "Alternate domain names (CNAMEs) for the CloudFront distribution"
+  type        = list(string)
+  default     = [""]
+}
+
+variable "cloudfront_acm_certificate_arn" {
+  description = "ACM certificate ARN in us-east-1 to attach to CloudFront"
+  type        = string
+  default     = ""
+}
