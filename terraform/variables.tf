@@ -35,3 +35,13 @@ variable "cloudfront_acm_certificate_arn" {
   type        = string
   default     = ""
 }
+
+variable "route53_hosted_zone_id" {
+  description = "Route53 hosted zone ID for domain"   #hemantkumar.dev (e.g., Z123456ABCDEFG)
+  type        = string
+}
+
+variable "route53_record_name" {
+  description = "route53 record"
+  type = string
+}

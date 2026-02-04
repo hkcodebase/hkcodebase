@@ -229,3 +229,20 @@ resource "aws_iam_role_policy" "github_actions_policy" {
     ]
   })
 }
+
+# -----------------------------------------------------------------------------
+# Route53 -> CloudFront (ALIAS)
+# -----------------------------------------------------------------------------
+resource "aws_route53_record" "root_a" {
+  zone_id = var.route53_hosted_zone_id
+  name    = var.route53_record_name
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website_storage.domain_name
+    # The Route 53 Hosted Zone ID for CloudFront (this is a constant value provided by AWS)
+    # The value is 'Z2FDTNDATAQYW2' for all CloudFront distributions
+    zone_id                = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
