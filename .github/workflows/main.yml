@@ -2,7 +2,7 @@ name: Deploy index.html to S3 + Invalidate CloudFront (OIDC)
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
     paths:
       - "hemantkumardev/index.html"
       - ".github/workflows/main.yml"
