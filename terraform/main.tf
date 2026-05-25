@@ -68,6 +68,9 @@ resource "aws_cloudfront_distribution" "website_storage" {
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
 
+  # Accept requests for your domain -> hemantkumar.dev in my case
+  aliases = var.cloudfront_aliases
+
   origin {
     domain_name              = aws_s3_bucket.website_storage.bucket_regional_domain_name
     origin_id                = "s3_origin"
@@ -104,7 +107,9 @@ resource "aws_cloudfront_distribution" "website_storage" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.cloudfront_acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   tags = {
@@ -223,4 +228,21 @@ resource "aws_iam_role_policy" "github_actions_policy" {
       }
     ]
   })
+}
+
+# -----------------------------------------------------------------------------
+# Route53 -> CloudFront (ALIAS)
+# -----------------------------------------------------------------------------
+resource "aws_route53_record" "root_a" {
+  zone_id = var.route53_hosted_zone_id
+  name    = var.route53_record_name
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website_storage.domain_name
+    # The Route 53 Hosted Zone ID for CloudFront (this is a constant value provided by AWS)
+    # The value is 'Z2FDTNDATAQYW2' for all CloudFront distributions
+    zone_id                = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
