@@ -42,22 +42,24 @@
    THEME — CSS variables
    ───────────────────────────────────────────────────────── */
 :root {
-  --bg:        #f8f7f4;
-  --text:      #111111;
-  --muted:     #888888;
-  --border:    #d4d1ca;
-  --label-bg:  #eeece8;
-  --row-hover: #f0ede8;
-  --link:      #111111;
+  --bg:        #faf8f2;
+  --text:      #1a1208;
+  --muted:     #8a7a60;
+  --border:    #d8cebc;
+  --label-bg:  #f0ead8;
+  --accent:    #c17f24;
+  --row-hover: #ede4cc;
+  --link:      #1a1208;
 }
 html.dark {
-  --bg:        #0e0e0e;
-  --text:      #dedad4;
-  --muted:     #555555;
-  --border:    #242424;
-  --label-bg:  #1a1a1a;
-  --row-hover: #161616;
-  --link:      #dedad4;
+  --bg:        #0f0d09;
+  --text:      #e8e0cc;
+  --muted:     #6b5e48;
+  --border:    #2e2518;
+  --label-bg:  #1e1a10;
+  --accent:    #e09535;
+  --row-hover: #1a1508;
+  --link:      #e8e0cc;
 }
 
 
@@ -166,9 +168,9 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--text);
+  color: var(--accent);
   background: var(--label-bg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
   padding: 4px 12px;
   margin-bottom: 12px;
 }
@@ -326,12 +328,13 @@ a:hover {
 }
 .score-bar-fill {
   height: 100%;
-  background: var(--text);
+  background: var(--accent);
   transition: width 0.8s ease;
 }
 .score-val {
   text-align: right;
   font-weight: 600;
+  color: var(--accent);
 }
 
 
@@ -365,7 +368,7 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
   margin-bottom: 8px;
 }
 .formula-text {
