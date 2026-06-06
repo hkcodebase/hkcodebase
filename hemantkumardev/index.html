@@ -17,289 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        /* ── THEME ───────────────────────────────────────── */
-        :root {
-          --bg:       #f8f7f4;
-          --text:     #111111;
-          --muted:    #888888;
-          --border:   #d4d1ca;
-          --row-hover:#f0ede8;
-          --link:     #111111;
-        }
-        html.dark {
-          --bg:       #0e0e0e;
-          --text:     #dedad4;
-          --muted:    #555555;
-          --border:   #242424;
-          --row-hover:#161616;
-          --link:     #dedad4;
-        }
-
-        /* ── RESET ───────────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        /* ── BASE ────────────────────────────────────────── */
-        body {
-          font-family: 'JetBrains Mono', 'Courier New', monospace;
-          font-size: 15px;
-          line-height: 1.8;
-          background: var(--bg);
-          color: var(--text);
-          max-width: 1020px;
-          margin: 0 auto;
-          padding: 52px 44px 100px;
-          transition: background 0.2s ease, color 0.2s ease;
-        }
-
-        a {
-          color: var(--link);
-          text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
-          text-decoration-thickness: 1px;
-          text-underline-offset: 3px;
-        }
-
-        /* ── NAV ─────────────────────────────────────────── */
-        .nav {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 64px;
-        }
-        .nav-logo {
-          font-weight: 600;
-          font-size: 16px;
-          letter-spacing: 0.02em;
-        }
-        .nav-right {
-          display: flex;
-          align-items: center;
-          gap: 28px;
-        }
-        .nav-link {
-          font-size: 13px;
-          color: var(--muted);
-          transition: color 0.15s;
-        }
-        .nav-link:hover {
-          background: var(--text);
-          color: var(--bg);
-          text-decoration: none;
-        }
-        .theme-btn {
-          background: none;
-          border: 1px solid var(--border);
-          color: var(--muted);
-          font-family: inherit;
-          font-size: 13px;
-          line-height: 1;
-          cursor: pointer;
-          padding: 4px 8px;
-          transition: color 0.15s, border-color 0.15s;
-        }
-        .theme-btn:hover {
-          color: var(--text);
-          border-color: var(--text);
-        }
-
-        /* ── SECTION LABEL ───────────────────────────────── */
-        .label {
-          font-size: 12px;
-          letter-spacing: 0.13em;
-          text-transform: uppercase;
-          color: var(--muted);
-          padding-bottom: 14px;
-          border-bottom: 1px solid var(--border);
-          margin-bottom: 28px;
-        }
-
-        /* ── HERO ────────────────────────────────────────── */
-        .hero {
-          margin-bottom: 72px;
-        }
-        .hero-name {
-          font-size: 28px;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          margin-bottom: 6px;
-        }
-        .hero-role {
-          font-size: 16px;
-          color: var(--muted);
-          margin-bottom: 32px;
-        }
-        .hero-bio {
-          max-width: 720px;
-          margin-bottom: 24px;
-          color: var(--text);
-        }
-        .hero-now {
-          font-size: 14px;
-          color: var(--muted);
-        }
-        .hero-now a { color: var(--text); }
-
-        /* ── WORK ────────────────────────────────────────── */
-        .work {
-          margin-bottom: 72px;
-        }
-        .project {
-          display: grid;
-          grid-template-columns: 32px 1fr auto;
-          column-gap: 20px;
-          padding: 22px 0;
-          border-bottom: 1px solid var(--border);
-          color: var(--text);
-          transition: background 0.12s, padding 0.12s;
-          cursor: pointer;
-        }
-        .project:first-of-type {
-          border-top: 1px solid var(--border);
-        }
-        /* Project rows: full dark highlight on hover */
-        .project:hover {
-          background: var(--text);
-          color: var(--bg);
-          padding-left: 10px;
-          padding-right: 10px;
-          margin-left: -10px;
-          margin-right: -10px;
-          text-decoration: none;
-        }
-        /* Cascade light text to all children */
-        .project:hover .project-title,
-        .project:hover .project-arrow {
-          color: var(--bg);
-        }
-        .project:hover .project-num,
-        .project:hover .project-tags,
-        .project:hover .project-desc,
-        .project:hover .project-year {
-          color: var(--bg);
-          opacity: 0.55;
-        }
-        .project-num {
-          font-size: 13px;
-          color: var(--muted);
-          padding-top: 2px;
-        }
-        .project-body { min-width: 0; }
-        .project-title {
-          font-weight: 500;
-          margin-bottom: 3px;
-        }
-        .project-tags {
-          font-size: 13px;
-          color: var(--muted);
-          margin-bottom: 5px;
-        }
-        .project-desc {
-          font-size: 13px;
-          color: var(--muted);
-        }
-        .project-right {
-          text-align: right;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 2px;
-          padding-top: 2px;
-        }
-        .project-year {
-          font-size: 13px;
-          color: var(--muted);
-          white-space: nowrap;
-        }
-        .project-arrow {
-          font-size: 15px;
-          color: var(--muted);
-          transition: color 0.12s;
-        }
-        .project:hover .project-arrow {
-          color: var(--text);
-        }
-
-        /* ── EXPERTISE ───────────────────────────────────── */
-        .expertise {
-          margin-bottom: 72px;
-        }
-        .skills-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 44px 72px;
-        }
-        .skill-group { }
-        .skill-group-name {
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.03em;
-          margin-bottom: 14px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid var(--border);
-        }
-        .skill-list {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 7px;
-        }
-        .skill-list li {
-          font-size: 13px;
-          color: var(--muted);
-        }
-        .skill-list li::before {
-          content: "– ";
-          color: var(--border);
-        }
-
-        /* ── CONNECT ─────────────────────────────────────── */
-        .connect {
-          margin-bottom: 72px;
-        }
-        .connect-bio {
-          color: var(--muted);
-          max-width: 460px;
-          margin-bottom: 22px;
-          font-size: 13px;
-        }
-        .connect-links {
-          display: flex;
-          gap: 28px;
-        }
-        .connect-link {
-          font-size: 13px;
-        }
-        .connect-link:hover {
-          background: var(--text);
-          color: var(--bg);
-          text-decoration: none;
-        }
-
-        /* ── FOOTER ──────────────────────────────────────── */
-        footer {
-          padding-top: 20px;
-          border-top: 1px solid var(--border);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 8px;
-          font-size: 11.5px;
-          color: var(--muted);
-        }
-
-        /* ── RESPONSIVE ──────────────────────────────────── */
-        @media (max-width: 560px) {
-          body { padding: 32px 20px 64px; }
-          .skills-grid { grid-template-columns: 1fr; gap: 28px; }
-          .nav-right { gap: 16px; }
-          .project { grid-template-columns: 24px 1fr auto; column-gap: 12px; }
-        }
-    </style>
+    <link rel="stylesheet" href="hk.css">
 </head>
 <body>
 
@@ -335,104 +53,106 @@
     <!-- Work -->
     <section id="work" class="work">
         <p class="label">Work</p>
+        <div class="box">
+            <a href="https://snarky-squirrel.hemantkumar.dev" target="_blank" class="project">
+                <span class="project-num">01</span>
+                <div class="project-body">
+                    <p class="project-title">Snarky Squirrel — AI PR Reviewer</p>
+                    <p class="project-tags">LangGraph · AWS Bedrock · Multi-agent · Cognito · Python</p>
+                    <p class="project-desc">Multi-agent code reviewer with Cognito auth, deployed on EC2 with HTTPS.</p>
+                </div>
+                <div class="project-right">
+                    <span class="project-year">2026</span>
+                    <span class="project-arrow">↗</span>
+                </div>
+            </a>
 
-        <a href="https://snarky-squirrel.hemantkumar.dev" target="_blank" class="project">
-            <span class="project-num">01</span>
-            <div class="project-body">
-                <p class="project-title">Snarky Squirrel — AI PR Reviewer</p>
-                <p class="project-tags">LangGraph · AWS Bedrock · Multi-agent · Cognito · Python</p>
-                <p class="project-desc">Multi-agent code reviewer with Cognito auth, deployed on EC2 with HTTPS.</p>
-            </div>
-            <div class="project-right">
-                <span class="project-year">2026</span>
-                <span class="project-arrow">↗</span>
-            </div>
-        </a>
+            <a href="https://links.hemantkumar.dev" target="_blank" class="project">
+                <span class="project-num">02</span>
+                <div class="project-body">
+                    <p class="project-title">Serverless TinyURL</p>
+                    <p class="project-tags">Lambda · DynamoDB · API Gateway · Terraform</p>
+                    <p class="project-desc">Serverless URL shortener on AWS, fully managed via IaC.</p>
+                </div>
+                <div class="project-right">
+                    <span class="project-year">2025</span>
+                    <span class="project-arrow">↗</span>
+                </div>
+            </a>
 
-        <a href="https://links.hemantkumar.dev" target="_blank" class="project">
-            <span class="project-num">02</span>
-            <div class="project-body">
-                <p class="project-title">Serverless TinyURL</p>
-                <p class="project-tags">Lambda · DynamoDB · API Gateway · Terraform</p>
-                <p class="project-desc">Serverless URL shortener on AWS, fully managed via IaC.</p>
-            </div>
-            <div class="project-right">
-                <span class="project-year">2025</span>
-                <span class="project-arrow">↗</span>
-            </div>
-        </a>
-
-        <a href="https://hemantkumar.dev" target="_blank" class="project">
-            <span class="project-num">03</span>
-            <div class="project-body">
-                <p class="project-title">Portfolio — hemantkumar.dev</p>
-                <p class="project-tags">S3 / CloudFront · Terraform · GitHub Actions</p>
-                <p class="project-desc">Cloud-native portfolio on AWS, auto-deployed via GitHub Actions.</p>
-            </div>
-            <div class="project-right">
-                <span class="project-year">2024</span>
-                <span class="project-arrow">↗</span>
-            </div>
-        </a>
+            <a href="https://hemantkumar.dev" target="_blank" class="project">
+                <span class="project-num">03</span>
+                <div class="project-body">
+                    <p class="project-title">Portfolio — hemantkumar.dev</p>
+                    <p class="project-tags">S3 / CloudFront · Terraform · GitHub Actions</p>
+                    <p class="project-desc">Cloud-native portfolio on AWS, auto-deployed via GitHub Actions.</p>
+                </div>
+                <div class="project-right">
+                    <span class="project-year">2024</span>
+                    <span class="project-arrow">↗</span>
+                </div>
+            </a>
+        </div>
     </section>
 
     <!-- Expertise -->
     <section id="expertise" class="expertise">
         <p class="label">Expertise</p>
+        <div class="box">
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <p class="skill-group-name">LLMs &amp; Generative AI</p>
+                    <ul class="skill-list">
+                        <li>LangGraph</li>
+                        <li>LangChain</li>
+                        <li>AWS Bedrock</li>
+                        <li>Prompt Engineering</li>
+                        <li>Multi-agent Systems</li>
+                        <li>RAG</li>
+                        <li>Claude API</li>
+                    </ul>
+                </div>
 
-        <div class="skills-grid">
-            <div class="skill-group">
-                <p class="skill-group-name">LLMs &amp; Generative AI</p>
-                <ul class="skill-list">
-                    <li>LangGraph</li>
-                    <li>LangChain</li>
-                    <li>AWS Bedrock</li>
-                    <li>Prompt Engineering</li>
-                    <li>Multi-agent Systems</li>
-                    <li>RAG</li>
-                    <li>Claude API</li>
-                </ul>
-            </div>
+                <div class="skill-group">
+                    <p class="skill-group-name">Data &amp; Event-Driven Systems</p>
+                    <ul class="skill-list">
+                        <li>Apache Spark</li>
+                        <li>Kafka</li>
+                        <li>Real-time Pipelines</li>
+                        <li>Event-driven Architecture</li>
+                        <li>Airflow</li>
+                        <li>dbt</li>
+                        <li>ETL / ELT</li>
+                        <li>Data Modeling</li>
+                        <li>SQL / NoSQL</li>
+                    </ul>
+                </div>
 
-            <div class="skill-group">
-                <p class="skill-group-name">Data &amp; Event-Driven Systems</p>
-                <ul class="skill-list">
-                    <li>Apache Spark</li>
-                    <li>Kafka</li>
-                    <li>Real-time Pipelines</li>
-                    <li>Event-driven Architecture</li>
-                    <li>Airflow</li>
-                    <li>dbt</li>
-                    <li>ETL / ELT</li>
-                    <li>Data Modeling</li>
-                    <li>SQL / NoSQL</li>
-                </ul>
-            </div>
+                <div class="skill-group">
+                    <p class="skill-group-name">Cloud &amp; Infrastructure</p>
+                    <ul class="skill-list">
+                        <li>AWS</li>
+                        <li>Terraform</li>
+                        <li>Docker / K8s</li>
+                        <li>ECS / EKS</li>
+                        <li>SageMaker</li>
+                        <li>CI/CD</li>
+                        <li>GitHub Actions</li>
+                    </ul>
+                </div>
 
-            <div class="skill-group">
-                <p class="skill-group-name">Cloud &amp; Infrastructure</p>
-                <ul class="skill-list">
-                    <li>AWS</li>
-                    <li>Terraform</li>
-                    <li>Docker / K8s</li>
-                    <li>ECS / EKS</li>
-                    <li>SageMaker</li>
-                    <li>CI/CD</li>
-                    <li>GitHub Actions</li>
-                </ul>
-            </div>
-
-            <div class="skill-group">
-                <p class="skill-group-name">Software Engineering</p>
-                <ul class="skill-list">
-                    <li>Java 17+ / Spring Boot</li>
-                    <li>Python</li>
-                    <li>React (full-stack)</li>
-                    <li>Microservices</li>
-                    <li>Large-scale Systems</li>
-                    <li>REST APIs</li>
-                    <li>System Design</li>
-                </ul>
+                <div class="skill-group">
+                    <p class="skill-group-name">Software Engineering</p>
+                    <ul class="skill-list">
+                        <li>Java 17+ / Spring Boot</li>
+                        <li>Python</li>
+                        <li>React (full-stack)</li>
+                        <li>Microservices</li>
+                        <li>Large-scale Systems</li>
+                        <li>REST APIs</li>
+                        <li>System Design</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -440,13 +160,17 @@
     <!-- Connect -->
     <section id="connect" class="connect">
         <p class="label">Connect</p>
-        <p class="connect-bio">
-            Open to discussing AI systems, large-scale production engineering, real-time data platforms, or full-stack architecture.
-        </p>
-        <div class="connect-links">
-            <a href="https://www.linkedin.com/in/hemantk01/" target="_blank" class="connect-link">LinkedIn</a>
-            <a href="https://github.com/hkcodebase"           target="_blank" class="connect-link">GitHub</a>
-            <a href="https://hkcodeblogs.medium.com"          target="_blank" class="connect-link">Medium</a>
+        <div class="box">
+            <div class="connect-inner">
+                <p class="connect-bio">
+                    Open to discussing AI systems, large-scale production engineering, real-time data platforms, or full-stack architecture.
+                </p>
+                <div class="connect-links">
+                    <a href="https://www.linkedin.com/in/hemantk01/" target="_blank" class="connect-link">LinkedIn</a>
+                    <a href="https://github.com/hkcodebase"           target="_blank" class="connect-link">GitHub</a>
+                    <a href="https://hkcodeblogs.medium.com"          target="_blank" class="connect-link">Medium</a>
+                </div>
+            </div>
         </div>
     </section>
 
