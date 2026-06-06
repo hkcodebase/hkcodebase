@@ -6,7 +6,7 @@ I build large-scale production systems, AI agents, and real-time event-driven pi
 
 ---
 
-**Currently building → [snarky.hemantkumar.dev](https://snarky.hemantkumar.dev)**
+**Currently building → [snarky-squirrel.hemantkumar.dev](https://snarky-squirrel.hemantkumar.dev)**
 
 ---
 
@@ -14,7 +14,7 @@ I build large-scale production systems, AI agents, and real-time event-driven pi
 
 | # | Project | Stack | Year |
 |---|---------|-------|------|
-| 01 | [Snarky Squirrel — AI PR Reviewer](https://snarky.hemantkumar.dev) | LangGraph · AWS Bedrock · Multi-agent · Cognito · Python | 2026 |
+| 01 | [Snarky Squirrel — AI PR Reviewer](https://snarky-squirrel.hemantkumar.dev) | LangGraph · AWS Bedrock · Multi-agent · Cognito · Python | 2026 |
 | 02 | [Serverless TinyURL](https://links.hemantkumar.dev) | Lambda · DynamoDB · API Gateway · Terraform | 2025 |
 | 03 | [Portfolio — hemantkumar.dev](https://hemantkumar.dev) | S3 · CloudFront · Terraform · GitHub Actions | 2024 |
 
